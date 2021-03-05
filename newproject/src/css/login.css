@@ -1,0 +1,154 @@
+
+.columns {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #0773d8;
+}
+.form-wrappers {
+  background-color: #eee;
+  width: 25rem;
+  height: 15rem;
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.form {
+  margin: 0 -5rem;
+  /* text-align: center; */
+  /* background-color: red;
+  height: 50%; */
+}
+
+.submit {
+  width: 20rem;
+  margin: 0.5rem -3.5rem;
+  border-radius: 0.2rem;
+  padding: 0.7rem 0;
+  background-color: #3b9ffc;
+  color: white;
+  border:none;
+  box-shadow: 1px 1px rgba(14, 42, 255, 0.349);
+}
+
+.custom-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.custom-flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.links {
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: white;
+}
+
+.welcome {
+  text-align: center;
+  margin-top: 1rem;
+  color: white;
+}
+
+input.emails,
+input.passwords {
+  padding: 0.5rem 1rem;
+  outline: none;
+  border: 1px solid #cfcfcf;
+  border-radius: 5px;
+  width: 20rem;
+  margin: 0 -3.5rem;
+}
+
+input::placeholder {
+  font-size: 1.2em;
+  font-weight: lighter;
+  color: #999;
+}
+input.error {
+  border: 1px solid red;
+}
+
+label {
+  font-size: 0.8em;
+  margin-bottom: 1.25rem;
+  color: #222;
+  font-weight: lighter;
+  text-align: left;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 0.75em;
+  display: relative;
+}
+
+.name,
+.emails,
+.passwords {
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+
+.sign-in {
+  margin: 0 auto;
+}
+
+
+/* input .email,
+input .password {
+  padding: 6px;
+  outline: none;
+  border: 1px solid #cfcfcf;
+  border-radius: 5px;
+}
+
+input::placeholder {
+  font-size: 1.2em;
+  font-weight: lighter;
+  color: #999;
+}
+input.error {
+  border: 1px solid red;
+}
+
+label {
+  font-size: 0.8em;
+  margin-bottom: 1.25rem;
+  color: #222;
+  font-weight: lighter;
+  text-align: left;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 0.75em;
+  display: relative;
+}
+
+.name,
+.email,
+.password {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  padding: 0;
+}
+
+@media screen and (max-width: 811px) {
+  
+
+  form {
+    padding-left: 44%;
+    padding-right: 42%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+  } 
+  
+}*/
