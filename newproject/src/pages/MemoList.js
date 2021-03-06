@@ -4,7 +4,7 @@ export class MusicUpload extends Component {
   render() {
     return (
       <div>
-        Upload Musics
+        Memo list
       </div>
     )
   }

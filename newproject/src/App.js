@@ -1,44 +1,38 @@
-import React, { Component } from 'react';
-import './App.css';
-import {Provider} from 'react-redux';
-import {Switch, Route} from 'react-router-dom';
-import store from './store'
+import React, { Component, Suspense } from "react";
+import "./assets/base.scss";
+import Routes from "./Routes";
+import store from "./store";
+import "./App.css";
+import { Provider, connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 // Component
-import NavBar from './component/NavBar';
+import NavBar from "./component/NavBar";
 
 // action
-import {loadUser} from './action/userAction'
+import { loadUser } from "./action/userAction";
 
 // pages
-import Signin from './pages/signin';
-import Signup from './pages/signup';
-import MusicUpload from './pages/MusicUpload';
-import Loading from './component/loader'
+import Signin from "./pages/signin";
+import Signup from "./pages/signup";
+import MemoList from "./pages/MemoList";
+import SuspenseLoading from "./component/loader";
 
 class App extends Component {
-  componentDidMount(){
-    store.dispatch(loadUser())
+  componentDidMount() {
+    store.dispatch(loadUser());
   }
   render() {
     return (
-      <Provider store={store}>
-        {/* <div> */}
-        <Switch>
-          {/* <NavBar /> */}
-          <Route exact path="/" component={Signin} />
-          <Route exact path="/music" component={MusicUpload} />
-          <Route exact path={"/signup"} component={Signup} />
-          <Route exact path={'/loading'} component={Loading} />
-        </Switch>
-        {/* </div> */}
-        {/* <div>
-          <Switch>
-          </Switch>
-        </div> */}
-      </Provider>
+      <>
+        <Routes />
+      </>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  loading: state.loading,
+});
+
+export default withRouter(connect(mapStateToProps)(App));

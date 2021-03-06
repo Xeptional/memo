@@ -1,55 +1,48 @@
-import React, { Component } from 'react'
-import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
-import PropTypes from 'prop-types';
-import loadingGif from '../images/gif/loading-arrow.gif';
-// const { REACT_APP_GIT_HASH, REACT_APP_MY_ENV } = process.env;
+import React, { useState, useEffect } from "react";
+import { HashLoader } from "react-spinners";
+import { AnimatePresence, motion } from "framer-motion";
+import { useSelector, connect } from "react-redux";
+import { hideLoader } from "../action/loading";
+// import { hideModal } from "../actions/modal";
+import { withRouter } from "react-router-dom";
 
-export class Loading extends Component {
-  constructor(props) {
-    super(props)
-  
-    this.state = {
-      show: false,
-      redirect: false,
-    }
-  }
-  
+const SuspenseLoading = (props) => {
+  const loading = useSelector((state) => state.loading.loading);
+  const user = useSelector((state) => state.auth.isAuthenticated);
 
-  static propsTypes = {
-    auth: PropTypes.object.isRequired
-  }
+  if (!loading) return null;
+  // useEffect(() => {
+  //   // if (user === true) {
+  //   //   props.hideLoader();
+  //   // }
+  // });
 
-  componentDidMount() {
-    setTimeout(() => this.setState({ show: true}), 4000)
-  }
+  return (
+    <>
+      <AnimatePresence>
+        {loading && (
+          <motion.div
+            key="loading"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 5 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.3 }}
+          >
+            <div className="d-flex align-items-center flex-column vh-100 justify-content-center text-center py-3">
+              <div className="d-flex align-items-center flex-column px-4">
+                <HashLoader color={"#3c44b1"} loading={true} />
+              </div>
+              <div className="text-muted font-size-xl text-dark text-center pt-3">
+                <span className="font-size-lg d-block text-dark">
+                  Your request is loading
+                </span>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+};
 
-  render() {
-    const {isAuthenticated, user} = this.props.auth;
-    console.log(user)
-    // console.log(REACT_APP_MY_ENV)
-    return (
-      <div className="loading">
-        {
-          isAuthenticated ?
-          <div>
-            <h4>Welcome {user.username}</h4>
-            <img src={loadingGif} />
-            {
-              this.state.redirect || this.state.show ?
-              // <Redirect to={`${newUser.profile}`} /> : ''
-              <Redirect to='/music' /> : ''
-            }
-          </div>
-          : ''
-        }
-      </div>
-    )
-  }
-}
-
-const mapStateToProps = state => ({
-  auth: state.auth
-})
-
-export default connect(mapStateToProps, null)(Loading);
+export default withRouter(connect(null, { hideLoader })(SuspenseLoading));

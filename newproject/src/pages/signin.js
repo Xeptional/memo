@@ -1,12 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import images from '../images/images.jpeg';
 // import side from '../images/side.png';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { signin } from '../action/userAction';
-import { Alert, Card } from 'react-bootstrap';
-import { clearErrors } from '../action/errorActions';
-import { Redirect } from 'react-router-dom';
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { signin } from "../action/userAction";
+// import { Alert, Card } from "react-bootstrap";
+import { Alert } from "@material-ui/lab";
+import { showLoader, hideLoader } from "../action/loading";
+import { Card } from "@material-ui/core";
+import { clearErrors } from "../action/errorActions";
+import { Redirect } from "react-router-dom";
 import "../css/login.css";
 
 const emailRegex = RegExp(
@@ -18,61 +21,62 @@ class Signin extends Component {
     super(props);
 
     this.state = {
-      email: '',
-      password: '',
+      staffId: "",
       msg: null,
       redirect: false,
       formErrors: {
-        email: "",
-        password: ""
+        staffId: "",
+        password: "",
       },
-      setFormErrorMessage: ""
+      setFormErrorMessage: "",
     };
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   static propTypes = {
     isAuthenticated: PropTypes.bool,
     error: PropTypes.object.isRequired,
     signin: PropTypes.func.isRequired,
-    clearErrors: PropTypes.func.isRequired
-  }
+    clearErrors: PropTypes.func.isRequired,
+  };
 
   componentDidUpdate(prevProps) {
     const { error, isAuthenticated } = this.props;
     if (error !== prevProps.error) {
       // Check for register error
-      if (error.id === 'LOGIN_FAIL') {
-        this.setState({ msg: error.msg.msg })
+      if (error.id === "LOGIN_FAIL") {
+        this.setState({ msg: error.msg.msg });
       } else {
-        this.setState({ msg: null })
+        this.setState({ msg: null });
       }
     }
 
     // if authenticated redirect
     if (isAuthenticated) {
-      this.setState({ redirect: true });
       this.SendRedirect();
+      this.props.hideLoader();
+      this.props.history.push(`${process.env.REACT_APP_URL}/memo-list`);
     }
   }
 
   SendRedirect = () => {
-    this.props.clearErrors()
-  }
+    this.props.clearErrors();
+  };
 
   handleSubmit(e) {
     e.preventDefault();
 
-    const { email, password } = this.state;
+    const { staffId, password } = this.state;
 
     const user = {
-      email,
-      password
-    }
+      staffId,
+      password,
+    };
 
     // Attempt to login
-    this.props.signin(user)
+    this.props.signin(user);
+    this.props.showLoader();
   }
 
   handleChange(e) {
@@ -81,10 +85,9 @@ class Signin extends Component {
     let formErrors = { ...this.state.formErrors };
 
     switch (name) {
-      case "email":
-        formErrors.email = emailRegex.test(value)
-          ? ""
-          : "invalid email address";
+      case "staffId":
+        formErrors.staffId =
+          value.length < 6 ? "minimum 6 characaters required" : "";
         break;
       case "password":
         formErrors.password =
@@ -95,7 +98,7 @@ class Signin extends Component {
     }
 
     this.setState({ formErrors, [name]: value });
-  };
+  }
 
   render() {
     const { formErrors } = this.state;
@@ -106,62 +109,79 @@ class Signin extends Component {
       <>
         <div className="columns sign-in">
           <div className="wrapper">
-          <div className="custom-flex-col">
-            <div className="custom-flex-col welcome">
-              <div>Logo</div>
-              <div>Welcome back</div>
-            </div>
-          <Card className="form-wrappers">
-              <form className="form" onSubmit={this.handleSubmit}>
-                {/* <h2>SignIn</h2> */}
-                {this.state.msg ? <Alert variant="danger">{this.state.msg}</Alert> : null}
-                <div className="emails">
-                  <input
-                    type="email"
-                    name="emails"
-                    placeholder="Email"
-                    className="emails"
-                    onChange={this.handleChange}
-                  />
-                </div>
-                {formErrors.email.length > 0 && (
-                  <span className="errorMessage">{formErrors.email}</span>
-                )}
+            <div className="custom-flex-col">
+              <div className="custom-flex-col welcome">
+                <div>Logo</div>
+                <div>Welcome back</div>
+              </div>
+              <Card className="form-wrappers">
+                <form className="form" onSubmit={this.handleSubmit}>
+                  {/* <h2>SignIn</h2> */}
+                  <div
+                    style={{
+                      paddingBottom: "10px",
+                      paddingLeft: "6px",
+                      paddingRight: "6px",
+                    }}
+                  >
+                    {this.state.msg ? (
+                      <Alert severity="error">{this.state.msg}</Alert>
+                    ) : null}
+                  </div>
+                  <div className="emails">
+                    <input
+                      type="text"
+                      name="staffId"
+                      placeholder="staffId"
+                      className="emails"
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  {formErrors.staffId.length > 0 && (
+                    <span className="errorMessage">{formErrors.staffId}</span>
+                  )}
 
-                <div className="passwords">
-                  <input
-                    type="passwords"
-                    name="passwords"
-                    placeholder="Password"
-                    className="passwords"
-                    onChange={this.handleChange}
-                  />
-                </div>
-                {formErrors.password.length > 0 && (
-                  <span className="errorMessage">{formErrors.password}</span>
-                )}
+                  <div className="passwords">
+                    <input
+                      type="password"
+                      name="password"
+                      placeholder="Password"
+                      className="passwords"
+                      onChange={this.handleChange}
+                    />
+                  </div>
+                  {formErrors.password.length > 0 && (
+                    <span className="errorMessage">{formErrors.password}</span>
+                  )}
 
+                  <div>
+                    <button className="submit">Submit</button>
+                  </div>
+                </form>
+              </Card>
+
+              <div className="custom-flex-row links">
+                <div>Forgot Password?</div>
                 <div>
-                  <button className="submit">Submit</button>
+                  Don't have an account? <strong>Get Started</strong>
                 </div>
-              </form>
-            </Card>
-         
-          <div className="custom-flex-row links">
-            <div>Forgot Password?</div>
-            <div>Don't have an account? <strong>Get Started</strong></div>
-          </div>
-          </div>
+              </div>
+            </div>
           </div>
         </div>
       </>
-    )
+    );
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
-  error: state.error
-})
+  error: state.error,
+});
 
-export default connect(mapStateToProps, { signin, clearErrors })(Signin);
+export default connect(mapStateToProps, {
+  signin,
+  clearErrors,
+  showLoader,
+  hideLoader,
+})(Signin);

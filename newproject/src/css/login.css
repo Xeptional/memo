@@ -1,4 +1,3 @@
-
 .columns {
   display: flex;
   align-content: center;
@@ -10,7 +9,7 @@
 .form-wrappers {
   background-color: #eee;
   width: 25rem;
-  height: 15rem;
+  height: auto;
   margin: auto;
   margin-top: 2rem;
   margin-bottom: 0.5rem;
@@ -18,7 +17,11 @@
 
 .form {
   margin: 0 -5rem;
-  /* text-align: center; */
+  padding-left: 28%;
+  padding-right: 28%;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  text-align: center;
   /* background-color: red;
   height: 50%; */
 }
@@ -30,7 +33,7 @@
   padding: 0.7rem 0;
   background-color: #3b9ffc;
   color: white;
-  border:none;
+  border: none;
   box-shadow: 1px 1px rgba(14, 42, 255, 0.349);
 }
 
@@ -62,7 +65,7 @@ input.passwords {
   outline: none;
   border: 1px solid #cfcfcf;
   border-radius: 5px;
-  width: 20rem;
+  width: 18rem;
   margin: 0 -3.5rem;
 }
 
@@ -99,7 +102,6 @@ label {
 .sign-in {
   margin: 0 auto;
 }
-
 
 /* input .email,
 input .password {
@@ -141,14 +143,14 @@ label {
   padding: 0;
 }
 
-@media screen and (max-width: 811px) {
+}*/
+/* @media screen and (max-width: 811px) {
   
 
   form {
-    padding-left: 44%;
-    padding-right: 42%;
+    padding-left: 28%;
+    padding-right: 28%;
     padding-top: 10%;
     padding-bottom: 10%;
   } 
-  
-}*/
+} */
