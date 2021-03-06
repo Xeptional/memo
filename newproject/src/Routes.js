@@ -1,7 +1,8 @@
-import React, { useState, Suspense } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, Suspense, useEffect } from "react";
+import { useSelector, connect } from "react-redux";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import store from "./store";
+import { showLoader, hideLoader } from "./action/loading";
 
 // Component
 import NavBar from "./component/NavBar";
@@ -17,6 +18,14 @@ import SuspenseLoading from "./component/loader";
 
 const Routes = (props) => {
   const loading = useSelector((state) => state.loading.loading);
+
+  useEffect(() => {
+    props.showLoader();
+    setTimeout(() => {
+      props.hideLoader();
+    }, 5000);
+  }, []);
+
   return (
     <div>
       {loading ? (
@@ -53,4 +62,4 @@ const Routes = (props) => {
   );
 };
 
-export default Routes;
+export default connect(null, { showLoader, hideLoader })(Routes);
