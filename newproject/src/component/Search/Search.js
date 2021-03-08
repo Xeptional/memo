@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '2px 4px',
     display: 'flex',
     alignItems: 'right',
-    width: 400,
+    width: 300,
   },
   input: {
     marginLeft: theme.spacing(1),
@@ -33,9 +33,9 @@ export default function CustomizedInputBase() {
 
   return (
     <Paper component="form" className={classes.root}>
-      <IconButton className={classes.iconButton} aria-label="menu">
+      {/* <IconButton className={classes.iconButton} aria-label="menu">
         <MenuIcon />
-      </IconButton>
+      </IconButton> */}
       <InputBase
         className={classes.input}
         placeholder="Search Google Maps"
@@ -45,9 +45,9 @@ export default function CustomizedInputBase() {
         <SearchIcon />
       </IconButton>
       <Divider className={classes.divider} orientation="vertical" />
-      <IconButton color="primary" className={classes.iconButton} aria-label="directions">
+      {/* <IconButton color="primary" className={classes.iconButton} aria-label="directions">
         <DirectionsIcon />
-      </IconButton>
+      </IconButton> */}
     </Paper>
   );
 }

@@ -8,6 +8,7 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Memolist from "./Tabs/Memolist";
+import AddNew from "./Tabs/AddNew";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -22,7 +23,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p={3}>
-          <Typography>{children}</Typography>
+          <div>{children}</div>
         </Box>
       )}
     </div>
@@ -52,7 +53,8 @@ const useStyles = makeStyles((theme) => ({
     color: "#000",
   },
   tabPanel: {
-    marginTop: "40px",
+    marginTop: "20px",
+    // backgroundColor: "red"
   },
   pad: {
     paddingTop: "30px",
@@ -76,10 +78,14 @@ export default function SimpleTabs() {
             onChange={handleChange}
             aria-label="simple tabs example"
           >
-            <Tab className={classes.pad} label="Item One" {...a11yProps(0)} />
-            <Tab className={classes.pad} label="Item Two" {...a11yProps(1)} />
-            <Tab className={classes.pad} label="Item Three" {...a11yProps(2)} />
-            <Tab className={classes.pad} label="Item Four" {...a11yProps(3)} />
+            <Tab className={classes.pad} label="List" {...a11yProps(0)} />
+            <Tab className={classes.pad} label="Add New" {...a11yProps(1)} />
+            <Tab
+              className={classes.pad}
+              label="Re-assigned"
+              {...a11yProps(2)}
+            />
+            <Tab className={classes.pad} label="Resolved" {...a11yProps(3)} />
           </Tabs>
         </Container>
       </AppBar>
@@ -87,13 +93,13 @@ export default function SimpleTabs() {
         <TabPanel className={classes.tabPanel} value={value} index={0}>
           <Memolist />
         </TabPanel>
-        <TabPanel value={value} index={1}>
-          Item Two
+        <TabPanel className={classes.tabPanel} value={value} index={1}>
+          <AddNew />
         </TabPanel>
-        <TabPanel value={value} index={2}>
+        <TabPanel className={classes.tabPanel} value={value} index={2}>
           Item Three
         </TabPanel>
-        <TabPanel value={value} index={3}>
+        <TabPanel className={classes.tabPanel} value={value} index={3}>
           Item Four
         </TabPanel>
       </Container>
