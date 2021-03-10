@@ -52,11 +52,22 @@ class Form extends Component {
           />
         </div>
         <div style={{ paddingTop: "20px" }}>
+          <label style={{ paddingRight: "40px" }}>Date: </label>
+          <TextField
+            style={{ width: "80%" }}
+            id="outlined-basic"
+            name="memoTitle"
+            variant="outlined"
+          />
+        </div>
+        <div style={{ paddingTop: "20px" }}>
           <label style={{ paddingRight: "23px" }}>Remark: </label>
           <TextField
             style={{ width: "80%" }}
             id="outlined-basic"
             name="memoRemark"
+            multiline
+            rows={3}
             variant="outlined"
           />
         </div>
