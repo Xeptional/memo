@@ -1,7 +1,26 @@
 import React, { Component } from "react";
 import { TextField, Button } from "@material-ui/core";
+import UploadButton from "../../Uploadbtn";
 
 class Form extends Component {
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+       memoFrom: "",
+       memoTo: "",
+       memoTitle: "",
+       memoRemark: "",
+    }
+  }
+  
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+
+
+  }
+
   render() {
     return (
       <div style={{ paddingTop: "50px" }}>
@@ -10,6 +29,7 @@ class Form extends Component {
           <TextField
             style={{ width: "80%" }}
             id="outlined-basic"
+            name="memoFrom"
             variant="outlined"
           />
         </div>
@@ -18,6 +38,7 @@ class Form extends Component {
           <TextField
             style={{ width: "80%" }}
             id="outlined-basic"
+            name="memoTO"
             variant="outlined"
           />
         </div>
@@ -26,6 +47,7 @@ class Form extends Component {
           <TextField
             style={{ width: "80%" }}
             id="outlined-basic"
+            name="memoTitle"
             variant="outlined"
           />
         </div>
@@ -34,8 +56,15 @@ class Form extends Component {
           <TextField
             style={{ width: "80%" }}
             id="outlined-basic"
+            name="memoRemark"
             variant="outlined"
           />
+        </div>
+        <div style={{ paddingTop: "20px" }}>
+          <UploadButton />
+        </div>
+        <div style={{ paddingTop: "20px" }}>
+          <Button variant="contained" onClick={e => this.handleSubmit}>Submit</Button>
         </div>
       </div>
     );
