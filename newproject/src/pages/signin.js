@@ -111,19 +111,17 @@ class Signin extends Component {
           <div className="wrapper">
             <div className="custom-flex-col">
               <div className="custom-flex-col welcome">
-                <div>Logo</div>
-                <div>Welcome back</div>
+                <div className="app-name">E-MEMO MANAGER</div>
+                <div>Welcome back!</div>
               </div>
               <Card className="form-wrappers">
                 <form className="form" onSubmit={this.handleSubmit}>
-                  {/* <h2>SignIn</h2> */}
                   <div
                     style={{
                       paddingBottom: "10px",
                       paddingLeft: "6px",
                       paddingRight: "6px",
-                    }}
-                  >
+                    }}>
                     {this.state.msg ? (
                       <Alert severity="error">{this.state.msg}</Alert>
                     ) : null}
@@ -132,7 +130,7 @@ class Signin extends Component {
                     <input
                       type="text"
                       name="staffId"
-                      placeholder="staffId"
+                      placeholder="Staff ID"
                       className="emails"
                       onChange={this.handleChange}
                     />
@@ -163,7 +161,7 @@ class Signin extends Component {
               <div className="custom-flex-row links">
                 <div>Forgot Password?</div>
                 <div>
-                  Don't have an account? <strong>Get Started</strong>
+                  <strong>Get Started</strong>
                 </div>
               </div>
             </div>
