@@ -1,7 +1,6 @@
 import React, { Component, Suspense } from "react";
 import Routes from "./Routes";
 import store from "./store";
-// import { withStyles } from "@material-ui/core/styles";
 import "./App.css";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import { indigo, pink } from "@material-ui/core/colors";
@@ -11,6 +10,92 @@ import { withRouter } from "react-router-dom";
 // action
 import { loadUser } from "./action/userAction";
 import { loadMemo } from "./action/newMemoForm";
+
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  // far,
+  // faSquare,
+  // faLifeRing,
+  // faCheckCircle,
+  // faTimesCircle,
+  // faDotCircle,
+  // faThumbsUp,
+  // faComments,
+  // faFolderOpen,
+  // faTrashAlt,
+  // faFileImage,
+  // faFileArchive,
+  // faCommentDots,
+  // faFolder,
+  // faKeyboard,
+  // faCalendarAlt,
+  // faEnvelope,
+  // faAddressCard,
+  // faMap,
+  // faObjectGroup,
+  // faImages,
+  // faUser,
+  // faLightbulb,
+  // faGem,
+  // faClock,
+  // faUserCircle,
+  // faQuestionCircle,
+  // faBuilding,
+  // faBell,
+  // faFileExcel,
+  // faFileAudio,
+  // faFileVideo,
+  // faFileWord,
+  // faFilePdf,
+  // faFileCode,
+  // faFileAlt,
+  faEdit,
+  faEye,
+  // faChartBar,
+} from "@fortawesome/free-regular-svg-icons";
+import { faPaperclip } from "@fortawesome/free-solid-svg-icons";
+library.add(
+  // far,
+  // faSquare,
+  // faLifeRing,
+  // faCheckCircle,
+  // faTimesCircle,
+  // faDotCircle,
+  // faThumbsUp,
+  // faComments,
+  // faFolderOpen,
+  // faTrashAlt,
+  // faFileImage,
+  // faFileArchive,
+  // faCommentDots,
+  // faFolder,
+  // faKeyboard,
+  // faCalendarAlt,
+  // faEnvelope,
+  // faAddressCard,
+  // faMap,
+  // faObjectGroup,
+  // faImages,
+  // faUser,
+  // faLightbulb,
+  // faGem,
+  // faClock,
+  // faUserCircle,
+  // faQuestionCircle,
+  // faBuilding,
+  // faBell,
+  // faFileExcel,
+  // faFileAudio,
+  // faFileVideo,
+  // faFileWord,
+  // faFilePdf,
+  // faFileCode,
+  // faFileAlt,
+  faEdit,
+  faEye,
+  faPaperclip
+  // faChartBar
+);
 
 const theme = createMuiTheme({
   palette: {

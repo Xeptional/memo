@@ -8,7 +8,7 @@ import SearchIcon from '@material-ui/icons/Search';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: '2px 4px',
+    // padding: '2px 4px',
     display: 'flex',
     alignItems: 'right',
     width: 300,
@@ -17,9 +17,9 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(1),
     flex: 1,
   },
-  iconButton: {
-    padding: 10,
-  },
+  // iconButton: {
+  //   padding: 10,
+  // },
   divider: {
     height: 28,
     margin: 4,
@@ -30,16 +30,17 @@ export default function CustomizedInputBase() {
   const classes = useStyles();
 
   return (
-    <Paper component="form" className={classes.root}>
+    <div className="">
       <InputBase
         className={classes.input}
+        // className="search"
         placeholder="Search Google Maps"
         inputProps={{ 'aria-label': 'search google maps' }}
       />
       <IconButton type="submit" className={classes.iconButton} aria-label="search">
         <SearchIcon />
       </IconButton>
-      <Divider className={classes.divider} orientation="vertical" />
-    </Paper>
+      {/* <Divider className={classes.divider} orientation="vertical" /> */}
+    </div>
   );
 }

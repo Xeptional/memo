@@ -82,15 +82,17 @@ class Memolist extends Component {
         <div className="new">
           <h2>MEMO LIST</h2>
           <Button
-            onClick={(e) => this.handleClick(e)}
+            // onClick={(e) => this.handleClick(e)}
             style={{ position: "absolute", right: 100, top: 250 }}
           >
             Add New
           </Button>
         </div>
         <div style={{ position: "absolute", right: 100 }}>
+          {/* <div className="search"> */}
           <Search />
         </div>
+        {/* </div> */}
         <div style={{ marginTop: "80px" }}>
           <MemoTable />
         </div>

@@ -49,14 +49,14 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
   },
   tabs: {
-    backgroundColor: "#fff",
+    backgroundColor: "#e5e5e5",
     color: "#000",
   },
   tabPanel: {
-    // marginTop: "20px",
+    marginTop: "20px",
   },
   pad: {
-    // paddingTop: "30px",
+    paddingTop: "30px",
   },
 }));
 

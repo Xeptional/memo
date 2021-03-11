@@ -45,7 +45,7 @@ class NavBar extends Component {
       // <>
       <div
         style={{
-          backgroundColor: "blue",
+          backgroundColor: "#02456B",
           color: "#fff",
           padding: "2%",
           fontSize: "25px",
