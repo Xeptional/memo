@@ -88,7 +88,6 @@ export class Signup extends Component {
     };
 
     this.props.signup(user);
-    // console.log(user);
   };
 
   render() {

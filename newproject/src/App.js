@@ -10,6 +10,7 @@ import { withRouter } from "react-router-dom";
 
 // action
 import { loadUser } from "./action/userAction";
+import { loadMemo } from "./action/newMemoForm";
 
 const theme = createMuiTheme({
   palette: {
@@ -34,6 +35,7 @@ const theme = createMuiTheme({
 class App extends Component {
   componentDidMount() {
     store.dispatch(loadUser());
+    store.dispatch(loadMemo());
   }
   render() {
     return (

@@ -29,7 +29,9 @@ router.post("/signup", async (req, res) => {
     //   // token,
     //   msg: "Signup success! Please signin.",
     // });
-    res.status(200).send({ user: staffId, msg: "Signup success! Please signin." })
+    res
+      .status(200)
+      .send({ user: staffId, msg: "Signup success! Please signin." });
   });
 });
 

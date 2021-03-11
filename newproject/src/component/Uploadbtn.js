@@ -22,7 +22,7 @@ export default function UploadButton() {
         accept="image/*"
         className={classes.input}
         id="contained-button-file"
-        multiple
+        single
         type="file"
       />
       <label htmlFor="contained-button-file">

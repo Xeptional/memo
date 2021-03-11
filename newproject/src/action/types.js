@@ -14,3 +14,5 @@ export const MEMO_SUCCESS = "MEMO_SUCCESS";
 export const MEMO_FAILURE = "MEMO_FAILURE";
 export const MEMO_PENDING = "MEMO_PENDING";
 export const MEMO_ERROR = "MEMO_ERROR";
+export const MEMO_LOADING = "MEMO_LOADING";
+export const MEMO_LOADED = "MEMO_LOADED";

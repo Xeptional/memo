@@ -53,11 +53,10 @@ const useStyles = makeStyles((theme) => ({
     color: "#000",
   },
   tabPanel: {
-    marginTop: "20px",
-    // backgroundColor: "red"
+    // marginTop: "20px",
   },
   pad: {
-    paddingTop: "30px",
+    // paddingTop: "30px",
   },
 }));
 
